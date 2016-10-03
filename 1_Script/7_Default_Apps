@@ -93,8 +93,6 @@ pacman --noconfirm -S firefox
 
 pacman --noconfirm -S thunderbird
 
-pacman --noconfirm -S cutegram
-	echo Name\[de\]=Telegram >> /usr/share/applications/Cutegram.desktop
 
 
 #########################
