@@ -105,7 +105,6 @@ arch-chroot /mudskipper ./1_Installation/1_Script/9_Configuration
 
 #DEVICE=$(cat ./conf)
 rm /mudskipper/1_Installation/conf
-rm ./conf
 
 echo
 echo -------------------------
