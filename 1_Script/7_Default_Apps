@@ -53,6 +53,8 @@ pacman --noconfirm -S gnome-mines
 
 pacman --noconfirm -S gnome-sudoku
 
+pacman --noconfirm -S gnome-2048
+
 
 #########################
 #Service  Folder	#
