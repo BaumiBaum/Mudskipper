@@ -1,0 +1,132 @@
+#!/bin/bash
+
+
+echo
+echo -------------------------
+echo Installing Applications...
+sleep 2
+echo
+
+##ooooooooooooooooooooooooooooooooooooooooooooo##
+#                                               #
+#	Install Default GUI Applications	#
+#                                               #
+##ooooooooooooooooooooooooooooooooooooooooooooo##
+
+
+#########################
+#Images Folder		#
+#########################
+
+
+pacman --noconfirm -S gimp
+	sed -i '/Name\[de\]=GNU Image Manipulation Program/d' /usr/share/applications/gimp.desktop
+	echo Name\[de\]=Bilbearbeitung >> /usr/share/applications/gimp.desktop
+
+
+
+#########################
+#Multimedia Folder	#
+#########################
+
+
+pacman --noconfirm -S gnome-music
+
+
+pacman --noconfirm -S kdenlive
+	pacman --noconfirm -S kde-l10n-de
+	sed -i '/Name\[de\]=Kdenlive/d' /usr/share/applications/org.kde.kdenlive.desktop
+	echo Name\[de\]=Videoeditor >> /usr/share/applications/org.kde.kdenlive.desktop
+
+
+#########################
+#Games Folder		#
+#########################
+
+
+pacman --noconfirm -S aisleriot
+	sed -i '/Name\[de\]=AisleRiot Solitaire/d' /usr/share/applications/sol.desktop
+	echo Name\[de\]=Solitaire >> /usr/share/applications/sol.desktop
+
+
+pacman --noconfirm -S gnome-mines
+
+pacman --noconfirm -S gnome-sudoku
+
+
+#########################
+#Service  Folder	#
+#########################
+
+
+pacman --noconfirm -S gedit
+
+pacman --noconfirm -S asunder
+sed -i '/Name\[de\]=Asunder/d' /usr/share/applications/asunder.desktop
+        echo Name\[de\]=CD-DVD Rippen >> /usr/share/applications/asunder.desktop
+
+pacman --noconfirm -S brasero
+sed -i '/Name\[de\]=Brasero/d' /usr/share/applications/brasero.desktop
+       echo Name\[de\]=CD-DVD Brennen >> /usr/share/applications/brasero.desktop
+
+pacman --noconfirm -S file-roller
+
+pacman --noconfirm -S gnome-calendar
+
+
+#########################
+#Office Folder		#
+#########################
+
+
+pacman --noconfirm -S libreoffice-still libreoffice-still-de
+
+
+#########################
+#Web Folder		#
+#########################
+
+
+pacman --noconfirm -S firefox
+	pacman --noconfirm -S firefox-i18n-de
+
+
+pacman --noconfirm -S opera
+
+pacman --noconfirm -S thunderbird
+
+pacman --noconfirm -S cutegram
+	echo Name\[de\]=Telegram >> /usr/share/applications/Cutegram.desktop
+
+
+#########################
+#System Folder		#
+#########################
+
+
+pacman --noconfirm -S gnome-software
+
+
+##ooooooooooooooooooooooooooooooooooooooooooooo##
+#                                               #
+#			Other			#
+#                                               #
+##ooooooooooooooooooooooooooooooooooooooooooooo##
+
+
+#########################
+#Install TUI Apps	#
+#########################
+
+
+pacman -S --noconfirm wget
+
+
+#########################
+#Remove Unused Apps	#
+#########################
+
+
+pacman -Runs --noconfirm epiphany
+
+#pacman -Runs --noconfirm empathy

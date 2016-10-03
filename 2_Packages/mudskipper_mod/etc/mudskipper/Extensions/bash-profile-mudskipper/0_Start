@@ -1,0 +1,23 @@
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+USERDIR=$HOME/.config/mudskipper/Extensions/bash-profile-mudskipper
+mkdir -p $USERDIR
+
+source $USERDIR/config &> /dev/null
+
+if [ ! "BashProfile" == "true" ]; then
+ 
+	if [  "$HOME" == "/root" ]; then
+
+		cp $DIR/bashrcroot $HOME/.bashrc
+		
+	else
+
+		cp $DIR/bashrc $HOME/.bashrc
+
+	fi
+
+	echo BashProfile=true > $USERDIR/config
+
+fi
+

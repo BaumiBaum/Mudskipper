@@ -1,0 +1,25 @@
+#!/bin/bash
+
+echo 
+echo -------------------------
+echo Install Local Packages...
+sleep 2
+echo
+
+#########################
+#Remove Configuration	#
+#########################
+
+
+rm -R /usr/share/backgrounds
+rm -R /usr/share/gnome-background-properties
+
+
+#########################
+#Install Packages	#
+#########################
+
+
+cp -Rf /1_Installation/2_Packages/*/* /	
+systemctl enable mudskipper.service
+

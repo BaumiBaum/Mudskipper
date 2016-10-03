@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+
+	<wallpaper deleted="false">
+		
+		<name>Stripes 1</name>
+		<filename>/usr/share/backgrounds/Stripes/stripes1.svg</filename>
+		<options>zoom</options>
+    			<pcolor>#ffffff</pcolor>
+    			<scolor>#000000</scolor>
+
+	</wallpaper>
+
+
+
+	<wallpaper deleted="false">
+		
+		<name>Stripes 2</name>
+		<filename>/usr/share/backgrounds/Stripes/stripes4.svg</filename>
+		<options>zoom</options>
+    			<pcolor>#ffffff</pcolor>
+    			<scolor>#000000</scolor>
+
+	</wallpaper>
+
+
+
+	<wallpaper deleted="false">
+		
+		<name>Linux</name>
+		<filename>/usr/share/backgrounds/Linux/linuxwall4.png</filename>
+		<options>zoom</options>
+    			<pcolor>#ffffff</pcolor>
+    			<scolor>#000000</scolor>
+	</wallpaper>
+
+
+
+	<wallpaper deleted="false">
+		
+		<name>Linux 2</name>
+		<filename>/usr/share/backgrounds/Linux/linuxwall2.png</filename>
+		<options>zoom</options>
+    			<pcolor>#ffffff</pcolor>
+   			<scolor>#000000</scolor>
+	</wallpaper>
+
+
+
+	<wallpaper deleted="false">
+		
+		<name>Green</name>
+		<filename>/usr/share/backgrounds/Green_by_AndreyStrelnicov/Green_by_AndreyStrelnicov.jpg</filename>
+		<options>zoom</options>
+    			<pcolor>#ffffff</pcolor>
+    			<scolor>#000000</scolor>
+	</wallpaper>
+
+
+
+	<wallpaper deleted="false">
+		
+		<name>Time</name>
+		<filename>/usr/share/backgrounds/Time_by_AndreyStrelnicov/Time_by_AndreyStrelnicov.JPG</filename>
+		<options>zoom</options>
+    			<pcolor>#ffffff</pcolor>
+    			<scolor>#000000</scolor>
+	</wallpaper>
+
+
+
+	<wallpaper deleted="false">
+		
+		<name>Ocean</name>
+		<filename>/usr/share/backgrounds/Ocean_Ultra_Flat/Ocean_Ultra_Flat.jpg</filename>
+		<options>zoom</options>
+    			<pcolor>#ffffff</pcolor>
+    			<scolor>#000000</scolor>
+	</wallpaper>
+
+
+
+	<wallpaper deleted="false">
+		
+		<name>Dantes Ridge</name>
+		<filename>/usr/share/backgrounds/Dantes_Ridge_Ultra_Flat/Dantes_Ridge_Ultra_Flat.jpg</filename>
+		<options>zoom</options>
+    			<pcolor>#ffffff</pcolor>
+    			<scolor>#000000</scolor>
+	</wallpaper>
+
+
+
+	<wallpaper deleted="false">
+		
+		<name>Material Design</name>
+		<filename>/usr/share/backgrounds/Material_Design_by_charlie-henson/Material_Design.png</filename>
+		<options>zoom</options>
+   			<pcolor>#ffffff</pcolor>
+    			<scolor>#000000</scolor>
+	</wallpaper>
+
+
+</wallpapers>

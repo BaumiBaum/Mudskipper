@@ -1,0 +1,118 @@
+#!/bin/bash
+
+
+#########################
+#Setup Root		#
+#########################
+
+
+USER=
+pacman -S --noconfirm sudo
+echo
+echo "Set root Password:"
+passwd root
+echo
+
+#########################
+#Setup Existing User	#
+#########################
+
+echo
+echo -------------------------
+echo Clone an existing User? \(y/n\)
+read answer
+echo
+
+while [ ! "$answer"  = "y" -a ! "$answer" = "n" ]
+do
+echo -------------------------
+echo I could not read your answer. Please repeat.
+echo Clone an existing user? \(y/n\)
+read answer
+done
+
+
+while [ "$answer" = "y" ]
+do
+	
+	echo
+	echo -------------------------
+	echo Select User:
+	echo
+	ls /1_Installation/3_Bind
+	echo
+        read USER
+        echo
+
+        useradd -m -G wheel -s /bin/bash ${USER}
+        echo "Set Password for $USER:"
+        passwd $USER
+        gpasswd -a $USER wheel
+        gpasswd -a $USER audio
+        gpasswd -a $USER video
+        gpasswd -a $USER games
+        gpasswd -a $USER power
+
+        INPATH=/1_Installation/3_Bind/$USER
+        echo
+        echo Copy personal files...
+        echo
+        cp -R $INPATH/* /home/$USER
+        echo Copy configuration files...
+        cp -R $INPATH/.thunderbird /home/$USER
+	chown -R $USER /home/$USER
+	echo Complete!
+	echo
+	echo -------------------------
+	echo Clone next User? \(y/n\)
+        read answer
+done
+
+
+
+#########################
+#Setup New User		#
+#########################
+
+echo
+echo -------------------------
+echo Create a new User? \(y/n\)
+read answer
+
+while [ ! "$answer"  = "y" -a ! "$answer" = "n" ]
+do
+echo
+echo -------------------------
+echo I could not read your answer. Please repeat.
+echo Create a new user? y/n
+read answer
+done
+
+
+while [ "$answer" = "y" ]
+do
+
+	echo
+	echo -------------------------
+	echo "Create New User:"
+	read USER
+	useradd -m -G wheel -s /bin/bash ${USER}
+	echo
+	echo Set Password for $USER:
+	passwd $USER
+	
+	gpasswd -a $USER wheel
+	gpasswd -a $USER audio
+	gpasswd -a $USER video
+	gpasswd -a $USER games
+	gpasswd -a $USER power
+
+	echo
+	echo -------------------------
+	echo Create next User? y/n
+        read answer
+done
+
+
+echo
+echo %wheel ALL=\(ALL\) ALL >> /etc/sudoers

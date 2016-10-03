@@ -1,0 +1,144 @@
+#!/bin/bash
+
+
+
+#########################
+#Select Device          #
+#########################
+
+
+DEVICE=
+export answer
+
+lsblk
+echo
+echo Select Device for Installation. \(Example: /dev/sdx\)
+read DEVICE
+
+echo
+echo -------------------------
+echo Installing Arch-Linux on $DEVICE\? \(y/n\)
+read answer
+
+while [ ! "$answer"  = "y" -a ! "$answer" = "n" ]
+do
+	echo
+	echo -------------------------
+	echo I could not read your answer. Please repeat.
+	echo Installing Arch-Linux on $DEVICE\? \(y/n\)
+	read answer
+done
+
+while [ "$answer" = "n" ]
+do
+		exit
+done
+
+
+
+#########################
+#Cleaning up Device     #
+#########################
+
+echo
+echo -------------------------
+echo This Installation will erase all Data on $DEVICE\. Continue? \(y/n\)
+read answer
+
+while [ ! "$answer"  = "y" -a ! "$answer" = "n" ]
+do
+	echo
+	echo -------------------------
+        echo I could not read your answer. Please repeat.
+        echo This Installation will erase all Data on $DEVICE\. Continue? \(y/n\)
+        read answer
+done
+
+while [ "$answer" = "n" ]
+do
+        exit
+done
+
+umount $DEVICE* &> /dev/null
+swapoff $DEVICE* &> /dev/null
+
+echo
+echo
+mkfs.ext4 -F $DEVICE
+dd if=/dev/zero of=$DEVICE bs=512 count=17
+
+#########################
+#Creating Partitions    #
+#########################
+
+
+echo -e "g\nn\n\n\n+512M\nn\n\n\n+1M\nn\n\n\n+2G\nn\n\n\n\nt\n1\n1\nt\n2\n4\nt\n3\n19\nw" | fdisk $DEVICE
+echo
+echo -------------------------
+echo "Partitions created"
+sleep 2
+echo
+echo -------------------------
+echo "Formating Partitions..."
+sleep 2
+echo
+
+#########################
+# Formate Partitions    #
+#########################
+
+
+mkfs.vfat -F32  ${DEVICE}1
+mkswap ${DEVICE}3
+mkfs.ext4  -F ${DEVICE}4
+
+
+#########################
+# Partition Label	#
+#########################
+
+echo
+echo -------------------------
+echo Enter System Name:
+read Label
+e2label ${DEVICE}4 $Label
+
+
+#########################
+# Preparing Directions  #
+#########################
+
+
+echo
+echo -------------------------
+echo Mounting Partitions to Directories...
+sleep 2
+echo 
+
+mkdir /mudskipper
+
+swapon ${DEVICE}3
+mount ${DEVICE}4 /mudskipper
+mkdir -p /mudskipper/boot/EFI
+mount ${DEVICE}1 /mudskipper/boot/EFI
+
+
+#########################
+# Installing Arch Base  #
+#########################
+
+
+echo
+echo -------------------------
+echo Installing Arch-Linux Base...
+sleep 2
+echo 
+
+pacstrap /mudskipper base base-devel
+
+
+#########################
+# Set Hostname		#
+#########################
+
+echo $Label > /mudskipper/etc/hostname

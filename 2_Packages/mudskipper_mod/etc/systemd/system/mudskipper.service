@@ -1,0 +1,10 @@
+[Unit]
+Description=Mudskipper
+
+[Service]
+Typ=forking
+ExecStart=/bin/bash /etc/mudskipper/service.sh
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

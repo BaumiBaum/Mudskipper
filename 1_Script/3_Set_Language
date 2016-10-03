@@ -1,0 +1,66 @@
+#!/bin/bash
+
+
+#########################
+#Set X11 Keymap		#
+#########################
+
+echo
+echo -------------------------
+echo Set Keymap...
+sleep 2
+echo
+
+mkdir  -p /etc/X11/xorg.conf.d
+echo Section \"InputClass\" > /etc/X11/xorg.conf.d/00-keyboard.conf
+echo $'\t'Identifier \"system-keyboard\" >> /etc/X11/xorg.conf.d/00-keyboard.conf
+echo $'\t'MatchIsKeyboard \"on\" >> /etc/X11/xorg.conf.d/00-keyboard.conf
+echo $'\t'Option \"XkbLayout\" \"de\" >>  /etc/X11/xorg.conf.d/00-keyboard.conf
+echo EndSection >> /etc/X11/xorg.conf.d/00-keyboard.conf 	
+
+
+#########################
+#Set Console Keymap	#
+#########################
+
+
+echo KEYMAP=de  > /etc/vconsole.conf
+localectl set-keymap --no-convert de-latin1-nodeadkeys
+
+
+#########################
+#Set Language		#
+#########################
+
+echo
+echo -------------------------
+echo Set Language...
+sleep 2
+echo
+
+echo LANG=de_DE.UTF-8  > /etc/locale.conf
+echo de_DE.UTF-8 UTF-8  >> /etc/locale.gen
+echo de_DE@euro ISO-8859-15 >> /etc/locale.gen
+echo de_DE ISO-8859-1 >> /etc/locale.gen
+
+
+#########################
+#Generate Locale	#
+#########################
+
+
+locale-gen
+
+
+#########################
+#Link Timezone		#
+#########################
+
+echo 
+echo -------------------------
+echo Link Timezone...
+sleep 2
+echo
+
+ln -s /usr/share/zoneinfo/Europe/Vienna /etc/localtime
+

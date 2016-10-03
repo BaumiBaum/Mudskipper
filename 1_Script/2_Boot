@@ -1,0 +1,32 @@
+#!/bin/bash
+
+#########################
+#Installing Bootmanager	#
+#########################
+
+
+DEVICE=$(cat /1_Installation/conf)
+
+echo
+echo -------------------------
+echo Installing Bootloader...
+sleep 2
+echo 
+
+pacman -S --noconfirm grub efibootmgr
+grub-install --target=x86_64-efi  --efi-directory=/boot/EFI --bootloader-id=grub-efi --removable --recheck
+grub-install --target=i386-pc  --boot-directory=/boot --bootloader-id=grub-bios --removable $DEVICE
+sed -i "s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g" /etc/default/grub
+grub-mkconfig -o /boot/grub/grub.cfg
+
+
+#########################
+#Mkinitcpio Config.	#
+#########################
+
+
+sed -i "s/HOOKS=\"base udev autodetect modconf block filesystems keyboard fsck\"/HOOKS=\"base udev block autodetect modconf filesystems keyboard fsck\"/g" /etc/mkinitcpio.conf
+mkinitcpio  -p linux
+
+
+

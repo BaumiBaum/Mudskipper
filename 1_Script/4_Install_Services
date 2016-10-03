@@ -1,0 +1,134 @@
+#!/bin/bash
+
+echo
+echo -------------------------
+echo Install Services...
+sleep 2
+echo
+
+
+#########################
+#Arch Install Scripts	#
+#########################
+
+
+pacman -S --noconfirm arch-install-scripts
+pacman -S --noconfirm dosfstools
+
+
+#########################
+#Install X-Server	#
+#########################
+
+
+pacman -S --noconfirm xorg-server 
+pacman -S --noconfirm xorg-xinit
+pacman -S --noconfirm xorg-utils  
+pacman -S --noconfirm xorg-server-utils
+
+
+#########################
+#Install Xorg Drivers	#
+#########################
+
+
+pacman -S --noconfirm xorg-drivers
+
+
+#########################
+#Install  Network	#
+#########################
+
+
+pacman -S  --noconfirm net-tools
+pacman -S  --noconfirm ntp
+pacman -S  --noconfirm avahi
+
+
+#########################
+#Install ACPI		#
+#########################
+
+
+pacman -S --noconfirm acpid
+
+
+#########################
+#Install Cronie		#
+#########################
+
+
+pacman -S --noconfirm cronie
+
+
+#########################
+#Install Audio		#
+#########################
+
+
+pacman -S --noconfirm alsa-utils
+pacman -S --noconfirm pulseaudio
+
+
+#########################
+#Install Free Fonts	#
+#########################
+
+
+pacman -S --noconfirm ttf-liberation 
+pacman -S --noconfirm ttf-dejavu
+
+
+#########################
+#Install Environment	#
+#########################
+
+
+pacman -S --noconfirm gdm
+pacman -S --noconfirm gnome
+
+
+#########################
+#CD/DVD Support		#
+#########################
+
+pacman -S --noconfirm libcdio 
+pacman -S --noconfirm libdvdread 
+pacman -S --noconfirm libdvdcss 
+pacman -S --noconfirm libdvdnav
+
+
+#########################
+#Multimedia Codecs	#
+#########################
+
+
+pacman -S --noconfirm ffmpeg
+pacman -S --noconfirm gst-libav
+
+
+#########################
+#Filesystem Support	#
+#########################
+
+
+pacman -S --noconfirm ntfs-3g
+pacman -S --noconfirm exfat-utils 
+
+
+#########################
+#Printer Support	#
+#########################
+
+pacman -S --noconfirm cups
+pacman -S --noconfirm ghostscript
+pacman -S --noconfirm gsfonts
+pacman -S --noconfirm system-config-printer
+
+
+#########################
+#Iphone Support		#
+#########################
+
+
+pacman -S --noconfirm ifuse

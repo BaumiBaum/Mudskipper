@@ -1,0 +1,15 @@
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+USERCONFIG=$HOME/.config/mudskipper/Extensions/terminal-color-mudskipper
+
+
+source $USERCONFIG/config &> /dev/null
+
+
+if [ !  "$TerminalColor" == "true" ]; then
+
+	$DIR/set_color
+	mkdir -p $USERCONFIG
+	echo TerminalColor=true >> $USERCONFIG/config
+
+fi
