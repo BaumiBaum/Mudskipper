@@ -1,0 +1,122 @@
+#!/bin/bash
+
+
+
+
+##ooooooooooooooooooooooooooooooooooooooooooooo##
+#						#
+#		 Mudskipper Core		#
+#						#
+##ooooooooooooooooooooooooooooooooooooooooooooo##
+
+source ./1_Script/1_Base
+
+
+while [ "$answer" = "n" ]
+do
+        exit 1
+done
+
+
+#########################
+#Creating Install Path	#
+#########################
+
+
+mkdir /mudskipper/1_Installation
+cp  -Rf ./* /mudskipper/1_Installation
+
+##ooooooooooooooooooooooooooooooooooooooooooooo##
+#						#
+#	Running the Installation Script		#
+#						#
+##ooooooooooooooooooooooooooooooooooooooooooooo##
+
+
+#########################
+#Boot Script		#
+#########################
+
+
+arch-chroot /mudskipper ./1_Installation/1_Script/2_Boot
+
+
+#########################
+#Set Language Script	#
+#########################
+
+
+arch-chroot /mudskipper ./1_Installation/1_Script/3_Set_Language
+
+
+#########################
+#Install Services Script#
+#########################
+
+
+arch-chroot /mudskipper ./1_Installation/1_Script/4_Install_Services
+
+
+#########################
+#Enable Services Script	#
+#########################
+
+
+arch-chroot /mudskipper ./1_Installation/1_Script/5_Enable_Services
+
+
+#########################
+#Local Packages Script	#
+#########################
+
+
+arch-chroot /mudskipper ./1_Installation/1_Script/6_Local_Packages
+
+
+#########################
+#Default Apps Script	#
+#########################
+
+
+arch-chroot /mudskipper ./1_Installation/1_Script/7_Default_Apps
+
+
+#########################
+#Create Users Script	#
+#########################
+
+mount --bind /home/ /mudskipper/1_Installation/3_Bind
+arch-chroot /mudskipper ./1_Installation/1_Script/8_Create_Users
+umount /mudskipper/1_Installation/3_Bind
+
+#########################
+#Configuration Script	#
+#########################
+
+
+arch-chroot /mudskipper ./1_Installation/1_Script/9_Configuration
+
+
+##ooooooooooooooooooooooooooooooooooooooooooooo##
+#						#
+#		Cleaning Up			#
+#						#
+##ooooooooooooooooooooooooooooooooooooooooooooo##
+
+#DEVICE=$(cat ./conf)
+rm /mudskipper/1_Installation/conf
+rm ./conf
+
+echo
+echo -------------------------
+echo Unmounting $DEVICE
+echo
+umount ${DEVICE}1
+swapoff ${DEVICE}3
+umount ${DEVICE}4
+
+echo
+echo -------------------------
+echo Installation complete!
+echo -------------------------
+
