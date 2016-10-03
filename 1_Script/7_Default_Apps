@@ -67,7 +67,8 @@ sed -i '/Name\[de\]=Asunder/d' /usr/share/applications/asunder.desktop
 
 pacman --noconfirm -S brasero
 sed -i '/Name\[de\]=Brasero/d' /usr/share/applications/brasero.desktop
-       echo Name\[de\]=CD-DVD Brennen >> /usr/share/applications/brasero.desktop
+	echo \[Desktop Entry\] >> /usr/share/applications/brasero.desktop
+       	echo Name\[de\]=CD-DVD Brennen >> /usr/share/applications/brasero.desktop
 
 pacman --noconfirm -S file-roller
 
