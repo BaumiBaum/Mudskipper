@@ -22,7 +22,7 @@ done
 #Creating Install Path	#
 #########################
 
-
+mkdir ./3_Bind
 mkdir /mudskipper/1_Installation
 cp  -Rf ./* /mudskipper/1_Installation
 
