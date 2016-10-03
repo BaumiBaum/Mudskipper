@@ -4,6 +4,7 @@ written in Bash.
 
 This Script was build to Install an Arch Linux System on an USB-Device 
 to have an portable System.
+
 (Recommended USB Device: USB 3.0 + More then 30GB Space)
 
 An Installation should be able to boot on EFI and Bios Systems.
