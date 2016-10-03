@@ -91,8 +91,6 @@ pacman --noconfirm -S firefox
 	pacman --noconfirm -S firefox-i18n-de
 
 
-pacman --noconfirm -S opera
-
 pacman --noconfirm -S thunderbird
 
 pacman --noconfirm -S cutegram
@@ -129,4 +127,4 @@ pacman -S --noconfirm wget
 
 pacman -Runs --noconfirm epiphany
 
-#pacman -Runs --noconfirm empathy
+pacman -Runs --noconfirm empathy

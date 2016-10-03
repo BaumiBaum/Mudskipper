@@ -104,6 +104,7 @@ arch-chroot /mudskipper ./1_Installation/1_Script/9_Configuration
 ##ooooooooooooooooooooooooooooooooooooooooooooo##
 
 
+
 echo
 echo -------------------------
 echo Unmounting $DEVICE
@@ -111,6 +112,8 @@ echo
 umount ${DEVICE}1
 swapoff ${DEVICE}3
 umount ${DEVICE}4
+
+rm -R /mudskipper
 
 echo
 echo -------------------------
