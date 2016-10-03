@@ -117,7 +117,7 @@ pacman --noconfirm -S gnome-software
 
 
 pacman -S --noconfirm wget
-
+pacman -S --noconfirm git
 
 #########################
 #Remove Unused Apps	#
