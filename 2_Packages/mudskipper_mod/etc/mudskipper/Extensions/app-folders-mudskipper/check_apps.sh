@@ -23,7 +23,7 @@ sleep 2
 		if [ ! "$Folders" == "true" ]; then
 
 	                $DIR/enable_folders.sh
-        	        echo Folders=true >> $USERDIR/config
+        	        echo Folders=true >> $USERDIR/config &> /dev/null
 
                 fi
 
