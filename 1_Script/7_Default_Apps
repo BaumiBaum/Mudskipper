@@ -126,8 +126,6 @@ pacman -S --noconfirm git
 #########################
 
 
-pacman -Rs --noconfirm epiphany
+pacman -Runs --noconfirm epiphany
 
-pacman -Rs --noconfirm empathy
-
-pacman -Rs --noconfirm gnome-dictionary
+pacman -Runs --noconfirm empathy
