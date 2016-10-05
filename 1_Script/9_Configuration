@@ -37,7 +37,7 @@ echo NoDisplay=true >> /usr/share/applications/qv4l2.desktop
 echo NoDisplay=true >> /usr/share/applications/org.gnome.font-viewer.desktop
 echo NoDisplay=true >> /usr/share/applications/gucharmap.desktop
 echo NoDisplay=true >> /usr/share/applications/cups.desktop
-
+echo NoDisplay=true >> /usr/share/applications/org.gnome.Dictionary.desktop
 
 #########################
 #Rebuild Pacman         #
