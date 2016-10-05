@@ -128,4 +128,4 @@ pacman -S --noconfirm git
 
 pacman -Runs --noconfirm epiphany
 
-pacman -Runs --noconfirm empathy
+
