@@ -25,7 +25,7 @@ gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folder
 
 gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Games/ name 'Spiele'
 
-gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Games/ apps "['sol.desktop','gnome-mines.desktop','gnome-sudoku.desktop','supertux2.desktop']"
+gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Games/ apps "['sol.desktop','gnome-mines.desktop','gnome-sudoku.desktop','org.gnome.gnome-2048.desktop']"
 
 
 
@@ -34,7 +34,7 @@ gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folder
 gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Service/ name 'Dienste'
 
 
-gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Service/ apps "['org.gnome.Cheese.desktop','org.gnome.Dictionary.desktop','org.gnome.Screenshot.desktop','org.gnome.gedit.desktop','asunder.desktop','org.gnome.FileRoller.desktop','org.kde.ark.desktop','brasero.desktop']"
+gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Service/ apps "['org.gnome.Cheese.desktop','org.gnome.Screenshot.desktop','org.gnome.gedit.desktop','asunder.desktop','org.gnome.FileRoller.desktop','org.kde.ark.desktop','brasero.desktop']"
 
 
 #		Office Folder
