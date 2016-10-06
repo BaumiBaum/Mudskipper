@@ -1,0 +1,12 @@
+COLUMNS=$(tput cols)
+COUNTER=0
+
+
+
+
+while [ ! "$COUNTER" = "$COLUMNS"  ]
+do
+	
+	echo
+	COUNTER=$((COUNTER + 1))
+done

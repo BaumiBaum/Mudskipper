@@ -9,6 +9,11 @@
 #						#
 ##ooooooooooooooooooooooooooooooooooooooooooooo##
 
+./1_Script/ui/info 5 Welcome\ to\ Mudskipper
+./1_Script/ui/clear
+./1_Script/ui/recommend
+
+
 source ./1_Script/1_Base
 
 
