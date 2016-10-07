@@ -17,55 +17,102 @@ echo
 #Setup Existing User	#
 #########################
 
-echo
-echo -------------------------
-echo Clone an existing User? \(y/n\)
-read answer
-echo
+/1_Installation/1_Script/ui/clear
 
-while [ ! "$answer"  = "y" -a ! "$answer" = "n" ]
+CLONE=false
+
+while [ "$CLONE" = "false" ]
 do
-echo -------------------------
-echo I could not read your answer. Please repeat.
-echo Clone an existing user? \(y/n\)
-read answer
-done
 
-
-while [ "$answer" = "y" ]
-do
+	echo -------------------------------
+	echo Clone an existing User? \(y/n\)
+	echo -------------------------------
+	read answer
+	echo
 	
-	echo
-	echo -------------------------
-	echo Select User:
-	echo
-	ls /1_Installation/3_Bind
-	echo
-        read USER
-        echo
+	while [ "$answer" = "n" ]
+	do
+	
+	CLONE=true
+	
+	done
+	
+	while [ ! "$answer"  = "y" -a ! "$answer" = "n" ]
+	do
 
-        useradd -m -G wheel -s /bin/bash ${USER}
-        echo "Set Password for $USER:"
-        passwd $USER
-        gpasswd -a $USER wheel
-        gpasswd -a $USER audio
-        gpasswd -a $USER video
-        gpasswd -a $USER games
-        gpasswd -a $USER power
+		/1_Installation/1_Script/ui/clear
+		echo --------------------------------------------
+		echo I could not read your answer. Please repeat.
+		echo Clone an existing user? \(y/n\)
+		echo --------------------------------------------
+		read answer
+	done
 
-        INPATH=/1_Installation/3_Bind/$USER
-        echo
-        echo Copy personal files...
-        echo
-        cp -R $INPATH/* /home/$USER
-        echo Copy configuration files...
-        cp -R $INPATH/.thunderbird /home/$USER
-	chown -R $USER /home/$USER
-	echo Complete!
-	echo
-	echo -------------------------
-	echo Clone next User? \(y/n\)
-        read answer
+
+	while [ "$answer" = "y" ]
+	do
+		/1_Installation/1_Script/ui/clear
+                ls /1_Installation/3_Bind
+		echo ---------------------
+		echo Select user to clone:
+		echo ---------------------
+        	read USER
+		
+		if [ ! -d "/1_Installation/3_Bind/$USER" ]; then
+			
+			/1_Installation/1_Script/ui/clear
+        		/1_Installation/1_Script/ui/info 5 User\ \"$USER\"\ doesn\’t\ exist.
+        		
+			CLONE=false
+			answer=n
+		else
+	
+			CLONE=true
+
+			
+			useradd -m -G wheel -s /bin/bash ${USER}
+    			/1_Installation/1_Script/ui/clear
+	    		echo ------------------------------
+			echo Set Password for $USER:
+        		echo ------------------------------
+			passwd $USER
+
+        		/1_Installation/1_Script/ui/clear
+
+			gpasswd -a $USER wheel
+			gpasswd -a $USER audio
+			gpasswd -a $USER video
+			gpasswd -a $USER games
+			gpasswd -a $USER power
+			
+			INPATH=/1_Installation/3_Bind/$USER
+			/1_Installation/1_Script/ui/clear
+			echo ---------------------------------
+			echo Copy personal files. Please Wait.
+			echo ---------------------------------
+
+			cp -R $INPATH/* /home/$USER
+			
+			/1_Installation/1_Script/ui/clear
+			echo --------------------------------------
+			echo Copy configuration files. Please Wait.
+			echo --------------------------------------
+
+
+			cp -R $INPATH/.thunderbird /home/$USER &> /dev/null
+
+
+			chown -R $USER /home/$USER
+			
+			/1_Installation/1_Script/ui/clear
+			
+			echo -------------------------
+			echo Clone next User? \(y/n\)
+        		echo -------------------------
+			read answer
+
+		fi
+	done	
 done
 
 
@@ -74,17 +121,23 @@ done
 #Setup New User		#
 #########################
 
-echo
-echo -------------------------
+
+
+
+/1_Installation/1_Script/ui/clear
+echo --------------------------
 echo Create a new User? \(y/n\)
+echo --------------------------
 read answer
 
 while [ ! "$answer"  = "y" -a ! "$answer" = "n" ]
 do
-echo
-echo -------------------------
+
+/1_Installation/1_Script/ui/clear
+echo --------------------------------------------
 echo I could not read your answer. Please repeat.
 echo Create a new user? y/n
+echo --------------------------------------------
 read answer
 done
 
@@ -92,9 +145,10 @@ done
 while [ "$answer" = "y" ]
 do
 
-	echo
-	echo -------------------------
-	echo "Create New User:"
+	/1_Installation/1_Script/ui/clear
+	echo --------------
+	echo Enter username
+	echo --------------
 	read USER
 	useradd -m -G wheel -s /bin/bash ${USER}
 	echo
@@ -107,9 +161,10 @@ do
 	gpasswd -a $USER games
 	gpasswd -a $USER power
 
-	echo
-	echo -------------------------
+	/1_Installation/1_Script/ui/clear
+	echo ---------------------
 	echo Create next User? y/n
+	echo ---------------------
         read answer
 done
 
