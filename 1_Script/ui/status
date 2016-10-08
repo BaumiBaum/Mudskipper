@@ -1,0 +1,56 @@
+COLUMNS=$(tput cols)
+COUNTER=7
+#./status x x o \  \  \  \  \  
+
+
+while [ ! "$COUNTER" = "0"  ]
+do
+	
+	COUNT=7
+
+	LINES=$(tput lines)
+	LINES=$((LINES / 2))
+	
+	echo
+	echo  Wait: $COUNTER
+	COUNTER=$((COUNTER - 1))
+
+	while [ ! "$LINES" = "$COUNT"  ]
+	do
+	  	
+		echo 
+		COUNT=$((COUNT + 1))
+	done
+
+	printf "%45s\n" "Install Mudskipper..."
+	echo
+	echo
+	echo
+	echo \ \ \ \ \ \ \[$1\]\ Base
+	echo \ \ \ \ \ \ \[$2\]\ Boot
+	echo \ \ \ \ \ \ \[$3\]\ Language
+	echo \ \ \ \ \ \ \[$4\]\ Services
+	echo \ \ \ \ \ \ \[$5\]\ Local Packages
+	echo \ \ \ \ \ \ \[$6\]\ Applications
+	echo \ \ \ \ \ \ \[$7\]\ Add User
+	echo \ \ \ \ \ \ \[$8\]\ Configuration
+	
+
+	COUNT=7
+
+	while [ ! "$LINES" = "$COUNT"  ]
+	do
+		echo 
+		COUNT=$((COUNT + 1))
+	done
+	
+	
+	sleep 1
+	
+	COUNT=0
+
+	
+done
+
+
+
