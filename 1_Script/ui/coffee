@@ -1,0 +1,59 @@
+COLUMNS=$(tput cols)
+COUNTER=7
+CHANGE=1
+
+while [ ! "$COUNTER" = "0"  ]
+do
+	
+	COUNT=1
+	LINES=$(tput lines)
+	LINES=$((LINES / 2))
+	
+	echo
+	echo  Wait: $COUNTER
+	COUNTER=$((COUNTER - 1))
+
+	while [ ! "$LINES" = "$COUNT"  ]
+	do
+		echo 
+		COUNT=$((COUNT + 1))
+	done
+
+
+if [ "$CHANGE" = "1" ]
+then
+
+		
+	echo \ \ \ \ \(
+	echo \ \ \ \ \)
+	echo \ \ \ \[\_\]o It\'s time for a coffee break.
+	CHANGE=2
+else
+
+	echo \ \ \ \ \ \)
+        echo \ \ \ \ \(
+        echo \ \ \ \[\_\]o It\'s time for a coffee break.
+        CHANGE=1
+
+
+fi
+
+
+	COUNT=4
+
+	while [ ! "$LINES" = "$COUNT"  ]
+	do
+		echo 
+		COUNT=$((COUNT + 1))
+	done
+	
+	
+	sleep 1
+	
+	COUNT=0
+
+	
+done
+
+
+

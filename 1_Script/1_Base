@@ -118,10 +118,6 @@ RELOAD=y
 	./1_Script/ui/clear                         
 	sleep 1
 	./1_Script/ui/info 1 Warning
-	./1_Script/ui/clear                         
-	sleep 1
-	./1_Script/ui/info 1 Warning 
-
 
 
 	echo

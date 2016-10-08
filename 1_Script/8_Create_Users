@@ -19,7 +19,9 @@ echo
 
 /1_Installation/1_Script/ui/clear
 
+
 CLONE=false
+EXIST=false
 
 while [ "$CLONE" = "false" ]
 do
@@ -32,12 +34,11 @@ do
 	
 	while [ "$answer" = "n" ]
 	do
-	
-	CLONE=true
-	
+	CLONE=true	
+	answer=o
 	done
 	
-	while [ ! "$answer"  = "y" -a ! "$answer" = "n" ]
+	while [ ! "$answer"  = "y" -a ! "$answer" = "n" -a ! "$answer" = "o"  ]
 	do
 
 		/1_Installation/1_Script/ui/clear
@@ -68,15 +69,11 @@ do
 		else
 	
 			CLONE=true
-
+			EXIST=true
+			
 			
 			useradd -m -G wheel -s /bin/bash ${USER}
-    			/1_Installation/1_Script/ui/clear
-	    		echo ------------------------------
-			echo Set Password for $USER:
-        		echo ------------------------------
-			passwd $USER
-
+   
         		/1_Installation/1_Script/ui/clear
 
 			gpasswd -a $USER wheel
@@ -124,11 +121,33 @@ done
 
 
 
+
 /1_Installation/1_Script/ui/clear
 echo --------------------------
 echo Create a new User? \(y/n\)
 echo --------------------------
 read answer
+
+
+while [ "$EXIST" = "false" ] 
+do
+
+
+
+while [ "$answer"  = "n" -a "$EXIST" = "false" ]
+do
+/1_Installation/1_Script/ui/clear
+echo ----------------------------------------------------
+echo You need at minimum one user to install this System.
+echo So please enter \(y\).
+echo ----------------------------------------------------
+read answer
+
+done
+
+
+
+
 
 while [ ! "$answer"  = "y" -a ! "$answer" = "n" ]
 do
@@ -151,16 +170,13 @@ do
 	echo --------------
 	read USER
 	useradd -m -G wheel -s /bin/bash ${USER}
-	echo
-	echo Set Password for $USER:
-	passwd $USER
-	
+	EXIST=true
 	gpasswd -a $USER wheel
 	gpasswd -a $USER audio
 	gpasswd -a $USER video
 	gpasswd -a $USER games
 	gpasswd -a $USER power
-
+	
 	/1_Installation/1_Script/ui/clear
 	echo ---------------------
 	echo Create next User? y/n
@@ -168,6 +184,7 @@ do
         read answer
 done
 
+done
 
 echo
 echo %wheel ALL=\(ALL\) ALL >> /etc/sudoers
