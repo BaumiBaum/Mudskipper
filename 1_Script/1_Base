@@ -148,6 +148,8 @@ echo Enter System Name:
 echo ------------------
 read Label
 
+./1_Script/ui/clear
+./1_Script/ui/coffee
 
 DEVICE=/dev/$DEVICE
 echo $DEVICE

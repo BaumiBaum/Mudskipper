@@ -15,8 +15,13 @@
 
 
 ./1_Script/ui/clear
-./1_Script/ui/status o \  \  \  \  \  \  \ 
 source ./1_Script/1_Base
+
+
+while [ "$answer" = "n" ]
+do
+        exit 1
+done
 
 
 #########################
@@ -40,20 +45,12 @@ cp -Rf ./.git /mudskipper/1_Installation
 #########################
 
 
-
-./1_Script/ui/clear
-./1_Script/ui/status x o \  \  \  \  \  \ 
-
 arch-chroot /mudskipper ./1_Installation/1_Script/2_Boot
 
 
 #########################
 #Set Language Script	#
 #########################
-
-
-./1_Script/ui/clear
-./1_Script/ui/status x x o \  \  \  \  \ 
 
 
 arch-chroot /mudskipper ./1_Installation/1_Script/3_Set_Language
@@ -64,9 +61,6 @@ arch-chroot /mudskipper ./1_Installation/1_Script/3_Set_Language
 #########################
 
 
-./1_Script/ui/clear
-./1_Script/ui/status x x x o  \  \  \  \ 
-
 arch-chroot /mudskipper ./1_Installation/1_Script/4_Install_Services
 
 
@@ -75,16 +69,12 @@ arch-chroot /mudskipper ./1_Installation/1_Script/4_Install_Services
 #########################
 
 
-
 arch-chroot /mudskipper ./1_Installation/1_Script/5_Enable_Services
 
 
 #########################
 #Local Packages Script	#
 #########################
-
-./1_Script/ui/clear
-./1_Script/ui/status x x x x o \  \  \ 
 
 
 arch-chroot /mudskipper ./1_Installation/1_Script/6_Local_Packages
@@ -95,19 +85,12 @@ arch-chroot /mudskipper ./1_Installation/1_Script/6_Local_Packages
 #########################
 
 
-./1_Script/ui/clear
-./1_Script/ui/status x x x x x o \  \ 
-
 arch-chroot /mudskipper ./1_Installation/1_Script/7_Default_Apps
 
 
 #########################
 #Create Users Script	#
 #########################
-
-./1_Script/ui/clear
-./1_Script/ui/status x x x x x x o \ 
-
 
 mount --bind /home/ /mudskipper/1_Installation/3_Bind
 arch-chroot /mudskipper ./1_Installation/1_Script/8_Create_Users
@@ -117,8 +100,6 @@ umount /mudskipper/1_Installation/3_Bind
 #Configuration Script	#
 #########################
 
-./1_Script/ui/clear
-./1_Script/ui/status x x x x x x x o
 
 arch-chroot /mudskipper ./1_Installation/1_Script/9_Configuration
 
