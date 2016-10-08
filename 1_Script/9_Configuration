@@ -1,11 +1,5 @@
 #!/bin/bash
 
-echo
-echo -------------------------
-echo Finishing Installation...
-sleep 2
-echo
-
 #########################
 #Blacklist Speakers	#
 #########################
@@ -27,7 +21,6 @@ echo Name\[de\]=Webcam >> /usr/share/applications/org.gnome.Cheese.desktop
 #Hide unused Apps       #
 #########################
 
-
 echo NoDisplay=true >> /usr/share/applications/avahi-discover.desktop
 echo NoDisplay=true >> /usr/share/applications/bssh.desktop
 echo NoDisplay=true >> /usr/share/applications/bvnc.desktop
@@ -40,28 +33,14 @@ echo NoDisplay=true >> /usr/share/applications/cups.desktop
 echo NoDisplay=true >> /usr/share/applications/org.gnome.Dictionary.desktop
 
 #########################
-#Rebuild Pacman         #
+#Optimize Pacman        #
 #########################
 
-
-pacman --noconfirm -Rsn `pacman -Qdtq`
-pacman --noconfirm -Scc
-pacman-optimize
-
-
-#########################
-#Log Version		#
-#########################
-
-
-echo $(cat /proc/version) >> /1_Installation/5_Logs/Version.log
-echo $(gnome-shell --version) >> /1_Installation/5_Logs/Version.log
-
+pacman -Sc && pacman-optimize
 
 #########################
 #AppFolder Config       #
 #########################
-
 
 mkdir -p /etc/mudskipper/AppFolder/config
 ls /usr/share/applications > /etc/mudskipper/AppFolder/config/app_base

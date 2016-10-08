@@ -1,12 +1,6 @@
 #!/bin/bash
 
 
-echo
-echo -------------------------
-echo Installing Applications...
-sleep 2
-echo
-
 ##ooooooooooooooooooooooooooooooooooooooooooooo##
 #                                               #
 #	Install Default GUI Applications	#

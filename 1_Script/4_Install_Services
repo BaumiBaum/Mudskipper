@@ -1,11 +1,5 @@
 #!/bin/bash
 
-echo
-echo -------------------------
-echo Install Services...
-sleep 2
-echo
-
 
 #########################
 #Arch Install Scripts	#

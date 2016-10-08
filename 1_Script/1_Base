@@ -150,6 +150,8 @@ read Label
 
 ./1_Script/ui/clear
 ./1_Script/ui/coffee
+./1_Script/ui/clear
+./1_Script/ui/status o \  \  \  \  \  \  \ 
 
 DEVICE=/dev/$DEVICE
 echo $DEVICE
@@ -205,15 +207,7 @@ mount ${DEVICE}1 /mudskipper/boot/EFI
 # Installing Arch Base  #
 #########################
 
-
-echo
-echo -------------------------
-echo Installing Arch-Linux Base...
-sleep 2
-echo 
-
 pacstrap /mudskipper base base-devel
-
 
 #########################
 # Set Hostname		#

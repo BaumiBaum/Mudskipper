@@ -1,17 +1,7 @@
 #!/bin/bash
 
-
-#########################
-#Setup Root		#
-#########################
-
-
 USER=
 pacman -S --noconfirm sudo
-echo
-echo "Set root Password:"
-passwd root
-echo
 
 #########################
 #Setup Existing User	#
@@ -191,3 +181,22 @@ done
 
 echo
 echo %wheel ALL=\(ALL\) ALL >> /etc/sudoers
+
+
+
+#########################
+#Set Root Password	#
+#########################
+
+echo "Set a root Password? (y/n)
+read answer
+
+if [ "$answer" = "y"]
+then
+
+echo -----------------
+echo Set root Password
+echo -----------------
+passwd root
+
+fi
