@@ -75,7 +75,7 @@ do
 			useradd -m -G wheel -s /bin/bash ${USER}
    
         		/1_Installation/1_Script/ui/clear
-
+			passwd $USER
 			gpasswd -a $USER wheel
 			gpasswd -a $USER audio
 			gpasswd -a $USER video
@@ -129,60 +129,63 @@ echo --------------------------
 read answer
 
 
-while [ "$EXIST" = "false" ] 
+while [ "$EXIST" = "false" -o "$answer" = "y" ] 
 do
 
 
 
-while [ "$answer"  = "n" -a "$EXIST" = "false" ]
-do
-/1_Installation/1_Script/ui/clear
-echo ----------------------------------------------------
-echo You need at minimum one user to install this System.
-echo So please enter \(y\).
-echo ----------------------------------------------------
-read answer
-
-done
-
-
-
-
-
-while [ ! "$answer"  = "y" -a ! "$answer" = "n" ]
-do
-
-/1_Installation/1_Script/ui/clear
-echo --------------------------------------------
-echo I could not read your answer. Please repeat.
-echo Create a new user? y/n
-echo --------------------------------------------
-read answer
-done
-
-
-while [ "$answer" = "y" ]
-do
+	while [ "$answer"  = "n" -a "$EXIST" = "false" ]
+	do
 
 	/1_Installation/1_Script/ui/clear
-	echo --------------
-	echo Enter username
-	echo --------------
-	read USER
-	useradd -m -G wheel -s /bin/bash ${USER}
-	EXIST=true
-	gpasswd -a $USER wheel
-	gpasswd -a $USER audio
-	gpasswd -a $USER video
-	gpasswd -a $USER games
-	gpasswd -a $USER power
-	
-	/1_Installation/1_Script/ui/clear
-	echo ---------------------
-	echo Create next User? y/n
-	echo ---------------------
-        read answer
-done
+	echo ----------------------------------------------------
+	echo You need at minimum one user to install this System.
+	echo So please enter \(y\).
+	echo ----------------------------------------------------
+	read answer
+
+	done
+
+
+
+
+
+	while [ ! "$answer"  = "y" -a ! "$answer" = "n" ]
+	do
+
+		/1_Installation/1_Script/ui/clear
+		echo --------------------------------------------
+		echo I could not read your answer. Please repeat.
+		echo Create a new user? y/n
+		echo --------------------------------------------
+		read answer
+	done
+
+
+	while [ "$answer" = "y" ]
+	do
+
+		/1_Installation/1_Script/ui/clear
+		echo --------------
+		echo Enter username
+		echo --------------
+		read USER
+		useradd -m -G wheel -s /bin/bash ${USER}
+		EXIST=true
+
+		passwd $USER
+		gpasswd -a $USER wheel
+		gpasswd -a $USER audio
+		gpasswd -a $USER video
+		gpasswd -a $USER games
+		gpasswd -a $USER power
+		
+		/1_Installation/1_Script/ui/clear
+		echo ---------------------
+		echo Create next User? y/n
+		echo ---------------------
+        	read answer
+	done
 
 done
 
