@@ -3,6 +3,53 @@
 USER=
 pacman -S --noconfirm sudo
 
+function changepass {
+
+if [ "$answer" = "y" ]
+then
+        CHECK=false
+
+        while [ "$CHECK" = "false" ]
+        do
+
+        /1_Installation/1_Script/ui/clear
+        echo ---------------
+        echo Enter Password:
+        echo ---------------
+        read -s PASS1
+        /1_Installation/1_Script/ui/clear
+        echo ----------------
+        echo Repeat Password:
+        echo ----------------
+        read -s PASS2
+
+                if [ ! "$PASS1" = "$PASS2" ]
+                then
+
+                        /1_Installation/1_Script/ui/clear
+                        echo -----------------------
+                        echo Password doesn\'t match
+                        echo -----------------------
+                else
+                        CHECK=true
+                        echo $USER:$PASS1 | chpasswd
+                        PASS1=1
+                        PASS2=2
+                        /1_Installation/1_Script/ui/clear
+                        echo ------------
+                        echo Password Set
+                        echo ------------
+                        sleep 1
+                fi
+        done
+fi
+}
+
+
+
+
+
+
 #########################
 #Setup Existing User	#
 #########################
@@ -63,9 +110,9 @@ do
 			
 			
 			useradd -m -G wheel -s /bin/bash ${USER}
-   
+			changepass   
         		/1_Installation/1_Script/ui/clear
-			passwd $USER
+			
 
 
 
@@ -164,10 +211,11 @@ do
 		echo Enter username
 		echo --------------
 		read USER
+		
 		useradd -m -G wheel -s /bin/bash ${USER}
+		changepass
 		EXIST=true
 
-		passwd $USER
 		gpasswd -a $USER wheel
 		gpasswd -a $USER audio
 		gpasswd -a $USER video
@@ -192,57 +240,9 @@ echo %wheel ALL=\(ALL\) ALL >> /etc/sudoers
 #Set Root Password	#
 #########################
 
-echo Set a root Password?
+USER=root
+
+echo Set a root Password? \(y\/n\)
 read answer
 
-if [ "$answer" = "y" ]
-then
-
-	CHECK=false
-	USER=root
-
-	while [ "$CHECK" = "false" ]
-	do
-	
-	/1_Installation/1_Script/ui/clear
-        echo ---------------
-        echo Enter Password:
-        echo ---------------
-        read -s PASS1
-	
-
-	/1_Installation/1_Script/ui/clear
-        echo ----------------
-        echo Repeat Password:
-        echo ----------------
-        read -s PASS2
-
-        	if [ ! "$PASS1" = "$PASS2" ]
-        	then
-			
-			/1_Installation/1_Script/ui/clear
-			echo -----------------------
-       		        echo Password doesn\'t match
-			echo -----------------------
-
-        	else
-
-                	CHECK=true
-
-                	
-			echo $USER:$PASS1 | chpasswd
-
-                	PASS1=1
-                	PASS2=2
-
-			/1_Installation/1_Script/ui/clear
-                	echo ------------
-               		echo Password Set
-                	echo ------------
-			sleep 1
-
-        	fi
-	done
-
-
-fi
+changepass
