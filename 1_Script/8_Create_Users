@@ -242,7 +242,10 @@ echo %wheel ALL=\(ALL\) ALL >> /etc/sudoers
 
 USER=root
 
+/1_Installation/1_Script/ui/clear
+echo -----------------------------
 echo Set a root Password? \(y\/n\)
+echo -----------------------------
 read answer
 
 changepass

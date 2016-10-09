@@ -126,20 +126,30 @@ arch-chroot /mudskipper ./1_Installation/1_Script/9_Configuration
 #						#
 ##ooooooooooooooooooooooooooooooooooooooooooooo##
 
-
-
-echo
-echo -------------------------
-echo Unmounting $DEVICE
-echo
 umount ${DEVICE}1
 swapoff ${DEVICE}3
 umount ${DEVICE}4
 
 rm -R /mudskipper
 
-echo
+./1_Script/ui/clear
+./1_Script/ui/info 5 Installation\ complete\!
+./1_Script/ui/clear
+
 echo -------------------------
-echo Installation complete!
+echo Shutdown System? \(y\/n\)
 echo -------------------------
+read answer
+
+if [ "$answer" = "y" ]
+then
+	
+	shutdown -h now
+
+else
+
+	exit
+
+fi
+ 
 

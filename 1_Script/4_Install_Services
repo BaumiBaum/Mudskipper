@@ -9,6 +9,11 @@
 pacman -S --noconfirm arch-install-scripts
 pacman -S --noconfirm dosfstools
 
+#########################
+#Other			#
+#########################
+
+pacman -S --noconfirm sudo
 
 #########################
 #Install X-Server	#

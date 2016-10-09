@@ -126,8 +126,7 @@ RELOAD=y
 	echo --------------------------------------------------------------------
 	read answer
 
-
-
+	
 	while [ ! "$answer"  = "y" -a ! "$answer" = "n" ]
 	do
 		echo
@@ -154,7 +153,7 @@ read Label
 ./1_Script/ui/status o \  \  \  \  \  \  \ 
 
 DEVICE=/dev/$DEVICE
-echo $DEVICE
+echo DEVICE=$DEVICE > ./1_Script/config/device.config
 umount $DEVICE* &> /dev/null
 swapoff $DEVICE* &> /dev/null
 
