@@ -1,0 +1,45 @@
+COLUMNS=$(tput cols)
+COUNTER=10
+
+while [ ! "$COUNTER" = "0"  ]
+do
+	
+	COUNT=3
+	LINES=$(tput lines)
+	LINES=$((LINES / 2))
+	
+	echo
+	echo Wait: $COUNTER
+	COUNTER=$((COUNTER - 1))
+
+	while [ ! "$LINES" = "$COUNT"  ]
+	do
+		echo 
+		COUNT=$((COUNT + 1))
+	done
+
+	echo "This is the Mudskipper Installation script."
+        echo
+	echo 
+	echo "Recommended Hardware:    USB 3.0 60GB or higher"
+	echo
+	echo "Minimum Hardware:        USB 2.0 30GB"
+
+	COUNT=5
+
+	while [ ! "$LINES" = "$COUNT"  ]
+	do
+		echo 
+		COUNT=$((COUNT + 1))
+	done
+	
+	
+	sleep 1
+	
+	COUNT=0
+
+	
+done
+
+
+

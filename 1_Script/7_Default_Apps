@@ -1,12 +1,6 @@
 #!/bin/bash
 
 
-echo
-echo -------------------------
-echo Installing Applications...
-sleep 2
-echo
-
 ##ooooooooooooooooooooooooooooooooooooooooooooo##
 #                                               #
 #	Install Default GUI Applications	#
@@ -126,8 +120,6 @@ pacman -S --noconfirm git
 #########################
 
 
-pacman -Rs --noconfirm epiphany
+pacman -Runs --noconfirm epiphany
 
-pacman -Rs --noconfirm empathy
 
-pacman -Rs --noconfirm gnome-dictionary

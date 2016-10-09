@@ -1,0 +1,41 @@
+COLUMNS=$(tput cols)
+COUNTER=$1
+
+while [ ! "$COUNTER" = "0"  ]
+do
+	
+	COUNT=1
+	LINES=$(tput lines)
+	LINES=$((LINES / 2))
+	
+	echo
+	echo  Wait: $COUNTER
+	COUNTER=$((COUNTER - 1))
+
+	while [ ! "$LINES" = "$COUNT"  ]
+	do
+		echo 
+		COUNT=$((COUNT + 1))
+	done
+
+	printf "%45s\n" "$2"
+
+
+	COUNT=2
+
+	while [ ! "$LINES" = "$COUNT"  ]
+	do
+		echo 
+		COUNT=$((COUNT + 1))
+	done
+	
+	
+	sleep 1
+	
+	COUNT=0
+
+	
+done
+
+
+

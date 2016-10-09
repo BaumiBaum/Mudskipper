@@ -25,7 +25,7 @@ gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folder
 
 gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Games/ name 'Spiele'
 
-gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Games/ apps "['sol.desktop','gnome-mines.desktop','gnome-sudoku.desktop','supertux2.desktop']"
+gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Games/ apps "['sol.desktop','gnome-mines.desktop','gnome-sudoku.desktop','org.gnome.gnome-2048.desktop']"
 
 
 
@@ -49,7 +49,7 @@ gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folder
 
 gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Web/ name 'Internet'
 
-gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Web/ apps "['telegramdesktop.desktop','firefox.desktop','opera.desktop','thunderbird.desktop']"
+gsettings set org.gnome.desktop.app-folders.folder:/org/gnome/desktop/app-folders/folders/Web/ apps "['telegramdesktop.desktop','firefox.desktop','empathy.desktop','thunderbird.desktop']"
 
 
 

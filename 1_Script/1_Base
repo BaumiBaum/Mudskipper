@@ -7,32 +7,103 @@
 #########################
 
 
+
 DEVICE=
 export answer
+answer=n
+FICHECK=y
 
-lsblk
-echo
-echo Select Device for Installation. \(Example: /dev/sdx\)
-read DEVICE
 
-echo
-echo -------------------------
-echo Installing Arch-Linux on $DEVICE\? \(y/n\)
-read answer
-
-while [ ! "$answer"  = "y" -a ! "$answer" = "n" ]
-do
-	echo
-	echo -------------------------
-	echo I could not read your answer. Please repeat.
-	echo Installing Arch-Linux on $DEVICE\? \(y/n\)
-	read answer
-done
 
 while [ "$answer" = "n" ]
 do
+
+
+
+RELOAD=y
+
+	while [ "$RELOAD"  = "y" ]
+	do
+
+		./1_Script/ui/clear
+		lsblk
+		DEFAULT=$(lsblk | grep -w disk)
+		DEFAULT=$(echo  ${DEFAULT//0/})
+		DEFAULT=$(echo  ${DEFAULT//1/})
+		DEFAULT=$(echo  ${DEFAULT//2/})
+		DEFAULT=$(echo  ${DEFAULT//3/})
+		DEFAULT=$(echo  ${DEFAULT//4/})
+		DEFAULT=$(echo  ${DEFAULT//5/})
+		DEFAULT=$(echo  ${DEFAULT//6/})
+		DEFAULT=$(echo  ${DEFAULT//7/})
+		DEFAULT=$(echo  ${DEFAULT//8/})
+		DEFAULT=$(echo  ${DEFAULT//9/})
+		DEFAULT=$(echo  ${DEFAULT//disk/})
+		DEFAULT=$(echo  ${DEFAULT//G/})
+		DEFAULT=$(echo  ${DEFAULT//,/})
+		DEFAULT=$(echo  ${DEFAULT//:/})
+		echo _______________________________
+		echo
+	
+		echo $DEFAULT	
+		echo	
+
+		echo ---------------------------------------------------------------
+		echo Select Device for Installation. \(Example: sdx\) \(R\=reload\)
+		echo ---------------------------------------------------------------
+		read DEVICE
+	
+
+		./1_Script/ui/clear
+
+
+		CONTROL=$(echo ${#DEVICE})
+
+
+
+		if [ "$CONTROL" = 3 ]
+		then
+
+			RELOAD=n
+		
+		fi
+
+	
+
+		
+
+	done
+
+	lsblk
+	echo _______________________________
+	echo
+	echo
+
+
+	echo
+	echo ------------------------------------------
+	echo Installing Arch-Linux on $DEVICE\? \(y/n\)
+	echo ------------------------------------------
+	read answer
+
+
+
+
+
+	while [ ! "$answer"  = "y" -a ! "$answer" = "n" ]
+	do
+		echo
+		echo --------------------------------------------
+		echo I could not read your answer. Please repeat.
+		echo Installing Arch-Linux on $DEVICE\? \(y/n\)
+		echo --------------------------------------------
+		read answer
+	done
+
+	while [ "$answer" = "n" ]
+	do
 		exit
-done
+	done
 
 
 
@@ -40,25 +111,49 @@ done
 #Cleaning up Device     #
 #########################
 
-echo
-echo -------------------------
-echo This Installation will erase all Data on $DEVICE\. Continue? \(y/n\)
-read answer
+	./1_Script/ui/info 1 Warning
+	./1_Script/ui/clear
+	sleep 1
+	./1_Script/ui/info 1 Warning
+	./1_Script/ui/clear                         
+	sleep 1
+	./1_Script/ui/info 1 Warning
 
-while [ ! "$answer"  = "y" -a ! "$answer" = "n" ]
-do
+
 	echo
-	echo -------------------------
-        echo I could not read your answer. Please repeat.
-        echo This Installation will erase all Data on $DEVICE\. Continue? \(y/n\)
-        read answer
-done
+	echo --------------------------------------------------------------------
+	echo This Installation will erase all Data on $DEVICE\. Continue? \(y/n\)
+	echo --------------------------------------------------------------------
+	read answer
 
-while [ "$answer" = "n" ]
-do
-        exit
-done
+	
+	while [ ! "$answer"  = "y" -a ! "$answer" = "n" ]
+	do
+		echo
+		echo --------------------------------------------------------------------
+        	echo I could not read your answer. Please repeat.
+        	echo This Installation will erase all Data on $DEVICE\. Continue? \(y/n\)
+		echo --------------------------------------------------------------------
+        	read answer
+	done
 
+done 
+
+
+./1_Script/ui/clear
+
+echo ------------------
+echo Enter System Name:
+echo ------------------
+read Label
+
+./1_Script/ui/clear
+./1_Script/ui/coffee
+./1_Script/ui/clear
+./1_Script/ui/status o \  \  \  \  \  \  \ 
+
+DEVICE=/dev/$DEVICE
+echo DEVICE=$DEVICE > ./1_Script/config/device.config
 umount $DEVICE* &> /dev/null
 swapoff $DEVICE* &> /dev/null
 
@@ -74,14 +169,7 @@ dd if=/dev/zero of=$DEVICE bs=512 count=17
 
 echo -e "g\nn\n\n\n+512M\nn\n\n\n+1M\nn\n\n\n+2G\nn\n\n\n\nt\n1\n1\nt\n2\n4\nt\n3\n19\nw" | fdisk $DEVICE
 echo
-echo -------------------------
-echo "Partitions created"
-sleep 2
-echo
-echo -------------------------
-echo "Formating Partitions..."
-sleep 2
-echo
+
 
 #########################
 # Formate Partitions    #
@@ -97,10 +185,7 @@ mkfs.ext4  -F ${DEVICE}4
 # Partition Label	#
 #########################
 
-echo
-echo -------------------------
-echo Enter System Name:
-read Label
+
 e2label ${DEVICE}4 $Label
 
 
@@ -108,12 +193,6 @@ e2label ${DEVICE}4 $Label
 # Preparing Directions  #
 #########################
 
-
-echo
-echo -------------------------
-echo Mounting Partitions to Directories...
-sleep 2
-echo 
 
 mkdir /mudskipper
 
@@ -127,15 +206,7 @@ mount ${DEVICE}1 /mudskipper/boot/EFI
 # Installing Arch Base  #
 #########################
 
-
-echo
-echo -------------------------
-echo Installing Arch-Linux Base...
-sleep 2
-echo 
-
 pacstrap /mudskipper base base-devel
-
 
 #########################
 # Set Hostname		#

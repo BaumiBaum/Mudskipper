@@ -1,11 +1,5 @@
 #!/bin/bash
 
-echo
-echo -------------------------
-echo Install Services...
-sleep 2
-echo
-
 
 #########################
 #Arch Install Scripts	#
@@ -15,6 +9,11 @@ echo
 pacman -S --noconfirm arch-install-scripts
 pacman -S --noconfirm dosfstools
 
+#########################
+#Other			#
+#########################
+
+pacman -S --noconfirm sudo
 
 #########################
 #Install X-Server	#

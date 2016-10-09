@@ -5,13 +5,7 @@
 #########################
 
 
-DEVICE=$(cat /1_Installation/conf)
-
-echo
-echo -------------------------
-echo Installing Bootloader...
-sleep 2
-echo 
+source /1_Installation/1_Script/config/device.config
 
 pacman -S --noconfirm grub efibootmgr
 grub-install --target=x86_64-efi  --efi-directory=/boot/EFI --bootloader-id=grub-efi --removable --recheck
