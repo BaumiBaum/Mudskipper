@@ -66,6 +66,10 @@ do
    
         		/1_Installation/1_Script/ui/clear
 			passwd $USER
+
+
+
+
 			gpasswd -a $USER wheel
 			gpasswd -a $USER audio
 			gpasswd -a $USER video
@@ -188,15 +192,57 @@ echo %wheel ALL=\(ALL\) ALL >> /etc/sudoers
 #Set Root Password	#
 #########################
 
-echo "Set a root Password? (y/n)
+echo Set a root Password?
 read answer
 
-if [ "$answer" = "y"]
+if [ "$answer" = "y" ]
 then
 
-echo -----------------
-echo Set root Password
-echo -----------------
-passwd root
+	CHECK=false
+	USER=root
+
+	while [ "$CHECK" = "false" ]
+	do
+	
+	/1_Installation/1_Script/ui/clear
+        echo ---------------
+        echo Enter Password:
+        echo ---------------
+        read -s PASS1
+	
+
+	/1_Installation/1_Script/ui/clear
+        echo ----------------
+        echo Repeat Password:
+        echo ----------------
+        read -s PASS2
+
+        	if [ ! "$PASS1" = "$PASS2" ]
+        	then
+			
+			/1_Installation/1_Script/ui/clear
+			echo -----------------------
+       		        echo Password doesn\'t match
+			echo -----------------------
+
+        	else
+
+                	CHECK=true
+
+                	
+			echo $USER:$PASS1 | chpasswd
+
+                	PASS1=1
+                	PASS2=2
+
+			/1_Installation/1_Script/ui/clear
+                	echo ------------
+               		echo Password Set
+                	echo ------------
+			sleep 1
+
+        	fi
+	done
+
 
 fi
