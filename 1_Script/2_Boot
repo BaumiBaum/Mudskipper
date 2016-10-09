@@ -1,11 +1,13 @@
 #!/bin/bash
 
+SCRIPTPATH=/etc/mudskipper/Script
+
 #########################
 #Installing Bootmanager	#
 #########################
 
 
-source /1_Installation/1_Script/config/device.config
+source $SCRIPTPATH/1_Script/config/device.config
 
 pacman -S --noconfirm grub efibootmgr
 grub-install --target=x86_64-efi  --efi-directory=/boot/EFI --bootloader-id=grub-efi --removable --recheck

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+SCRIPTPATH=/etc/mudskipper/Script
 
 #########################
 #Remove Configuration	#
@@ -15,6 +16,6 @@ rm -R /usr/share/gnome-background-properties
 #########################
 
 
-cp -Rf /1_Installation/2_Packages/*/* /	
+cp -Rf $SCRIPTPATH/2_Packages/*/* /	
 systemctl enable mudskipper.service
 

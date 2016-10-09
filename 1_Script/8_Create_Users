@@ -2,6 +2,8 @@
 
 USER=
 pacman -S --noconfirm sudo
+SCRIPTPATH=/etc/mudskipper/Script
+
 
 function changepass {
 
@@ -12,12 +14,12 @@ then
         while [ "$CHECK" = "false" ]
         do
 
-        /1_Installation/1_Script/ui/clear
+        $SCRIPTPATH/1_Script/ui/clear
         echo ---------------
         echo Enter Password:
         echo ---------------
         read -s PASS1
-        /1_Installation/1_Script/ui/clear
+        $SCRIPTPATH/1_Script/ui/clear
         echo ----------------
         echo Repeat Password:
         echo ----------------
@@ -26,7 +28,7 @@ then
                 if [ ! "$PASS1" = "$PASS2" ]
                 then
 
-                        /1_Installation/1_Script/ui/clear
+                        $SCRIPTPATH/1_Script/ui/clear
                         echo -----------------------
                         echo Password doesn\'t match
                         echo -----------------------
@@ -35,7 +37,7 @@ then
                         echo $USER:$PASS1 | chpasswd
                         PASS1=1
                         PASS2=2
-                        /1_Installation/1_Script/ui/clear
+                        $SCRIPTPATH/1_Script/ui/clear
                         echo ------------
                         echo Password Set
                         echo ------------
@@ -54,7 +56,7 @@ fi
 #Setup Existing User	#
 #########################
 
-/1_Installation/1_Script/ui/clear
+$SCRIPTPATH/1_Script/ui/clear
 
 
 CLONE=false
@@ -78,7 +80,7 @@ do
 	while [ ! "$answer"  = "y" -a ! "$answer" = "n" -a ! "$answer" = "o"  ]
 	do
 
-		/1_Installation/1_Script/ui/clear
+		$SCRIPTPATH/1_Script/ui/clear
 		echo --------------------------------------------
 		echo I could not read your answer. Please repeat.
 		echo Clone an existing user? \(y/n\)
@@ -89,17 +91,17 @@ do
 
 	while [ "$answer" = "y" ]
 	do
-		/1_Installation/1_Script/ui/clear
-                ls /1_Installation/3_Bind
+		$SCRIPTPATH/1_Script/ui/clear
+                ls $SCRIPTPATH/3_Bind
 		echo ---------------------
 		echo Select user to clone:
 		echo ---------------------
         	read USER
 		
-		if [ ! -d "/1_Installation/3_Bind/$USER" ]; then
+		if [ ! -d "$SCRIPTPATH/3_Bind/$USER" ]; then
 			
-			/1_Installation/1_Script/ui/clear
-        		/1_Installation/1_Script/ui/info 5 User\ \"$USER\"\ doesn\’t\ exist.
+			$SCRIPTPATH/1_Script/ui/clear
+        		$SCRIPTPATH/1_Script/ui/info 5 User\ \"$USER\"\ doesn\’t\ exist.
         		
 			CLONE=false
 			answer=n
@@ -111,7 +113,7 @@ do
 			
 			useradd -m -G wheel -s /bin/bash ${USER}
 			changepass   
-        		/1_Installation/1_Script/ui/clear
+        		$SCRIPTPATH/1_Script/ui/clear
 			
 
 
@@ -123,15 +125,15 @@ do
 			gpasswd -a $USER games
 			gpasswd -a $USER power
 			
-			INPATH=/1_Installation/3_Bind/$USER
-			/1_Installation/1_Script/ui/clear
+			INPATH=$SCRIPTPATH/3_Bind/$USER
+			$SCRIPTPATH/1_Script/ui/clear
 			echo ---------------------------------
 			echo Copy personal files. Please Wait.
 			echo ---------------------------------
 
 			cp -R $INPATH/* /home/$USER
 			
-			/1_Installation/1_Script/ui/clear
+			$SCRIPTPATH/1_Script/ui/clear
 			echo --------------------------------------
 			echo Copy configuration files. Please Wait.
 			echo --------------------------------------
@@ -142,7 +144,7 @@ do
 
 			chown -R $USER /home/$USER
 			
-			/1_Installation/1_Script/ui/clear
+			$SCRIPTPATH/1_Script/ui/clear
 			
 			echo -------------------------
 			echo Clone next User? \(y/n\)
@@ -163,7 +165,7 @@ done
 
 
 
-/1_Installation/1_Script/ui/clear
+$SCRIPTPATH/1_Script/ui/clear
 echo --------------------------
 echo Create a new User? \(y/n\)
 echo --------------------------
@@ -178,7 +180,7 @@ do
 	while [ "$answer"  = "n" -a "$EXIST" = "false" ]
 	do
 
-	/1_Installation/1_Script/ui/clear
+	$SCRIPTPATH/1_Script/ui/clear
 	echo ----------------------------------------------------
 	echo You need at minimum one user to install this System.
 	echo So please enter \(y\).
@@ -194,7 +196,7 @@ do
 	while [ ! "$answer"  = "y" -a ! "$answer" = "n" ]
 	do
 
-		/1_Installation/1_Script/ui/clear
+		$SCRIPTPATH/1_Script/ui/clear
 		echo --------------------------------------------
 		echo I could not read your answer. Please repeat.
 		echo Create a new user? y/n
@@ -206,7 +208,7 @@ do
 	while [ "$answer" = "y" ]
 	do
 
-		/1_Installation/1_Script/ui/clear
+		$SCRIPTPATH/1_Script/ui/clear
 		echo --------------
 		echo Enter username
 		echo --------------
@@ -222,7 +224,7 @@ do
 		gpasswd -a $USER games
 		gpasswd -a $USER power
 		
-		/1_Installation/1_Script/ui/clear
+		$SCRIPTPATH/1_Script/ui/clear
 		echo ---------------------
 		echo Create next User? y/n
 		echo ---------------------
@@ -242,7 +244,7 @@ echo %wheel ALL=\(ALL\) ALL >> /etc/sudoers
 
 USER=root
 
-/1_Installation/1_Script/ui/clear
+$SCRIPTPATH/1_Script/ui/clear
 echo -----------------------------
 echo Set a root Password? \(y\/n\)
 echo -----------------------------

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+MOUNTPOINT=/etc/mudskipper/mount
 
 #########################
 #Select Device          #
@@ -194,22 +194,22 @@ e2label ${DEVICE}4 $Label
 #########################
 
 
-mkdir /mudskipper
+mkdir -p $MOUNTPOINT
 
 swapon ${DEVICE}3
-mount ${DEVICE}4 /mudskipper
-mkdir -p /mudskipper/boot/EFI
-mount ${DEVICE}1 /mudskipper/boot/EFI
+mount ${DEVICE}4 $MOUNTPOINT
+mkdir -p $MOUNTPOINT/boot/EFI
+mount ${DEVICE}1 $MOUNTPOINT/boot/EFI
 
 
 #########################
 # Installing Arch Base  #
 #########################
 
-pacstrap /mudskipper base base-devel
+pacstrap /etc/mudskipper/mount base base-devel
 
 #########################
 # Set Hostname		#
 #########################
 
-echo $Label > /mudskipper/etc/hostname
+echo $Label > $MOUNTPOINT/etc/hostname

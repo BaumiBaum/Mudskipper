@@ -1,5 +1,7 @@
 #!/bin/bash
 
+MOUNTPOINT=/etc/mudskipper/mount
+SCRIPTPATH=/etc/mudskipper/Script
 
 ##ooooooooooooooooooooooooooooooooooooooooooooo##
 #						#
@@ -36,9 +38,9 @@ source ./1_Script/1_Base
 #########################
 
 
-mkdir /mudskipper/1_Installation
-cp -Rf ./* /mudskipper/1_Installation
-cp -Rf ./.git /mudskipper/1_Installation
+mkdir -p $MOUNTPOINT$SCRIPTPATH
+cp -Rf ./* $MOUNTPOINT$SCRIPTPATH
+cp -Rf ./.git $MOUNTPOINT$SCRIPTPATH
 
 ##ooooooooooooooooooooooooooooooooooooooooooooo##
 #						#
@@ -56,7 +58,7 @@ cp -Rf ./.git /mudskipper/1_Installation
 ./1_Script/ui/clear
 ./1_Script/ui/status x o \  \  \  \  \  \ 
 
-arch-chroot /mudskipper ./1_Installation/1_Script/2_Boot
+arch-chroot $MOUNTPOINT .$SCRIPTPATH/1_Script/2_Boot
 
 
 #########################
@@ -68,7 +70,7 @@ arch-chroot /mudskipper ./1_Installation/1_Script/2_Boot
 ./1_Script/ui/status x x o \  \  \  \  \ 
 
 
-arch-chroot /mudskipper ./1_Installation/1_Script/3_Set_Language
+arch-chroot $MOUNTPOINT .$SCRIPTPATH/1_Script/3_Set_Language
 
 
 #########################
@@ -79,7 +81,7 @@ arch-chroot /mudskipper ./1_Installation/1_Script/3_Set_Language
 ./1_Script/ui/clear
 ./1_Script/ui/status x x x o  \  \  \  \ 
 
-arch-chroot /mudskipper ./1_Installation/1_Script/4_Install_Services
+arch-chroot $MOUNTPOINT .$SCRIPTPATH/1_Script/4_Install_Services
 
 
 #########################
@@ -88,7 +90,7 @@ arch-chroot /mudskipper ./1_Installation/1_Script/4_Install_Services
 
 
 
-arch-chroot /mudskipper ./1_Installation/1_Script/5_Enable_Services
+arch-chroot $MOUNTPOINT .$SCRIPTPATH/1_Script/5_Enable_Services
 
 
 #########################
@@ -99,7 +101,7 @@ arch-chroot /mudskipper ./1_Installation/1_Script/5_Enable_Services
 ./1_Script/ui/status x x x x o \  \  \ 
 
 
-arch-chroot /mudskipper ./1_Installation/1_Script/6_Local_Packages
+arch-chroot $MOUNTPOINT .$SCRIPTPATH/1_Script/6_Local_Packages
 
 
 #########################
@@ -110,7 +112,7 @@ arch-chroot /mudskipper ./1_Installation/1_Script/6_Local_Packages
 ./1_Script/ui/clear
 ./1_Script/ui/status x x x x x o \  \ 
 
-arch-chroot /mudskipper ./1_Installation/1_Script/7_Default_Apps
+arch-chroot $MOUNTPOINT .$SCRIPTPATH/1_Script/7_Default_Apps
 
 
 #########################
@@ -121,9 +123,9 @@ arch-chroot /mudskipper ./1_Installation/1_Script/7_Default_Apps
 ./1_Script/ui/status x x x x x x o \ 
 
 
-mount --bind /home/ /mudskipper/1_Installation/3_Bind
-arch-chroot /mudskipper ./1_Installation/1_Script/8_Create_Users
-umount /mudskipper/1_Installation/3_Bind
+mount --bind /home/ $MOUNTPOINT$SCRIPTPATH/3_Bind
+arch-chroot $MOUNTPOINT .$SCRIPTPATH/1_Script/8_Create_Users
+umount $MOUNTPOINT$SCRIPTPATH/3_Bind
 
 #########################
 #Configuration Script	#
@@ -132,7 +134,7 @@ umount /mudskipper/1_Installation/3_Bind
 ./1_Script/ui/clear
 ./1_Script/ui/status x x x x x x x o
 
-arch-chroot /mudskipper ./1_Installation/1_Script/9_Configuration
+arch-chroot $MOUNTPOINT .$SCRIPTPATH/1_Script/9_Configuration
 
 
 ##ooooooooooooooooooooooooooooooooooooooooooooo##
@@ -144,8 +146,6 @@ arch-chroot /mudskipper ./1_Installation/1_Script/9_Configuration
 umount ${DEVICE}1
 swapoff ${DEVICE}3
 umount ${DEVICE}4
-
-rm -R /mudskipper
 
 ./1_Script/ui/clear
 ./1_Script/ui/info 5 Installation\ complete\!
