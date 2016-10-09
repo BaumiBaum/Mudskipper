@@ -12,6 +12,21 @@
 ./1_Script/ui/recommend
 
 
+while [ ! "$ONLINE" = "true" ]
+do
+
+wget -q  --timeout=20 --spider http://kernel.org
+
+        if [[ $? -eq 0 ]]; then
+                ONLINE=true
+		./1_Script/ui/info 2 Online.	
+        else
+                sleep 1
+                ./1_Script/ui/info 1 Please\ check\ your\ internet\ connection.
+        fi
+
+done
+
 
 source ./1_Script/1_Base
 
