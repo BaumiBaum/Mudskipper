@@ -90,7 +90,7 @@ pacman --noconfirm -S firefox
 
 pacman --noconfirm -S thunderbird
 
-
+	pacman --noconfirm -S telepathy
 
 #########################
 #System Folder		#
