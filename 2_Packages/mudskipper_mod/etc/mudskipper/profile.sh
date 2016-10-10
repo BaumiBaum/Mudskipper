@@ -9,7 +9,11 @@ ExtensionsPath=/etc/mudskipper/Extensions
 
 source $ConfigFile &> /dev/null
 
+##################################
+#Gimp Single Window		 #
+##################################
 
+$ExtensionsPath/gimp-window-mudskipper/0_Start
 
 ##################################
 #Gnome Terminal Colors Extension #

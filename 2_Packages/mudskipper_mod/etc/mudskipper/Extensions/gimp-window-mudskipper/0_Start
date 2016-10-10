@@ -1,0 +1,12 @@
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+USERDIR=$HOME/.config/mudskipper/Extensions/gimp-window-mudskipper
+
+source $USERDIR/config &> /dev/null
+
+
+if [ ! "$Window" = "true" ]
+then
+	cp -R $DIR/.gimp*/ $HOME/
+	mkdir -p $USERDIR
+	echo Window=true > $USERDIR/config
+fi
