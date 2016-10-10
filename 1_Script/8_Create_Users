@@ -134,13 +134,19 @@ do
 			cp -R $INPATH/* /home/$USER
 			
 			$SCRIPTPATH/1_Script/ui/clear
-			echo --------------------------------------
-			echo Copy configuration files. Please Wait.
-			echo --------------------------------------
-
+			echo ---------------------------------
+			echo Copy configuration files? \(y/n\)
+			echo ---------------------------------
+			read answer
+			
+			if [ "$answer" = "y" ]
+			then
 
 			cp -R $INPATH/.thunderbird /home/$USER &> /dev/null
+			cp -R $INPATH/.mozilla /home/$USER &> /dev/null 
+			cp -R $INPATH/.local /home/$USER &> /dev/null
 
+			fi
 
 			chown -R $USER /home/$USER
 			
