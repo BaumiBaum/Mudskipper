@@ -7,16 +7,7 @@ source $USERDIR/config &> /dev/null
 
 if [ ! "BashProfile" == "true" ]; then
  
-	if [  "$HOME" == "/root" ]; then
-
-		cp $DIR/bashrcroot $HOME/.bashrc
-		
-	else
-
-		cp $DIR/bashrc $HOME/.bashrc
-
-	fi
-
+	cp $DIR/bashrc $HOME/.bashrc
 	echo BashProfile=true > $USERDIR/config
 
 fi

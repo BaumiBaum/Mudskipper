@@ -7,6 +7,12 @@ Path=/etc/mudskipper/Extensions
 
 
 #########################
+#Bash Profile           #
+#########################
+
+$Path/bash-profile-mudskipper/1_Start
+
+#########################
 #App-Folders		#
 #########################
 

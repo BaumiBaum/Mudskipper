@@ -1,0 +1,11 @@
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source $DIR/config &> /dev/null
+
+
+if [ ! "$root" = "true" ]
+then
+
+	cp $DIR/bashrcroot /root/.bashrc
+	echo root=true > $DIR/config
+fi
