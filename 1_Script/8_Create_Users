@@ -143,8 +143,10 @@ do
 			then
 
 			cp -R $INPATH/.thunderbird /home/$USER &> /dev/null
-			cp -R $INPATH/.mozilla /home/$USER &> /dev/null 
+			#cp -R $INPATH/.mozilla /home/$USER &> /dev/null 
 			cp -R $INPATH/.local /home/$USER &> /dev/null
+			cp -R $INPATH/.gimp* /home/$USER &> /dev/null			
+			cp -R $INPATH/.TelegramDesktop /home/$USER &> /dev/null
 
 			fi
 
