@@ -1,0 +1,20 @@
+#!/bin/sh
+
+DIR="$( cd  "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+MainDIR="$(dirname $DIR)"
+MainDIR="$(dirname $MainDIR)"
+
+export Type=user
+
+source $MainDIR/ressources.d/variables
+
+Icons="$(get_var Icons)"
+
+
+
+if [ !  "$Icons" == "true" ]; then
+
+	gsettings set org.gnome.desktop.interface icon-theme shadowless
+	write_var Icons true
+
+fi

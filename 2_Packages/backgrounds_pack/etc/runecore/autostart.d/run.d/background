@@ -1,0 +1,21 @@
+#!/bin/sh
+
+DIR="$( cd  "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+MainDIR="$(dirname $DIR)"
+MainDIR="$(dirname $MainDIR)"
+
+export Type=user
+
+source $MainDIR/ressources.d/variables
+
+Background="$(get_var Background)"
+
+
+
+if [ !  "$Background" == "true" ]; then
+
+        gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgrounds/Stripes/stripes1.svg'
+        gsettings set org.gnome.desktop.screensaver picture-uri 'file:///usr/share/backgrounds/Stripes/stripes4.svg'
+
+	write_var Background true
+fi

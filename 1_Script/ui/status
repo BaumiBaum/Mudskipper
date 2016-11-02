@@ -30,8 +30,8 @@ do
 	echo \ \ \ \ \ \ \[$2\]\ Boot
 	echo \ \ \ \ \ \ \[$3\]\ Language
 	echo \ \ \ \ \ \ \[$4\]\ Services
-	echo \ \ \ \ \ \ \[$5\]\ Local Packages
-	echo \ \ \ \ \ \ \[$6\]\ Applications
+	echo \ \ \ \ \ \ \[$5\]\ Applications
+	echo \ \ \ \ \ \ \[$6\]\ Local Packages
 	echo \ \ \ \ \ \ \[$7\]\ Add User
 	echo \ \ \ \ \ \ \[$8\]\ Configuration
 	

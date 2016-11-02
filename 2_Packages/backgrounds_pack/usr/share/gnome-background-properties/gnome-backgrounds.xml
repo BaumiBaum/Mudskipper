@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+
+	<wallpaper deleted="false">
+		
+		<name>Stripes 1</name>
+		<filename>/usr/share/backgrounds/Stripes/stripes1.svg</filename>
+		<options>zoom</options>
+    			<pcolor>#ffffff</pcolor>
+    			<scolor>#000000</scolor>
+
+	</wallpaper>
+
+
+
+	<wallpaper deleted="false">
+		
+		<name>Stripes 2</name>
+		<filename>/usr/share/backgrounds/Stripes/stripes4.svg</filename>
+		<options>zoom</options>
+    			<pcolor>#ffffff</pcolor>
+    			<scolor>#000000</scolor>
+
+	</wallpaper>
+
+
+
+	<wallpaper deleted="false">
+		
+		<name>Linux</name>
+		<filename>/usr/share/backgrounds/Linux/linuxwall4.png</filename>
+		<options>zoom</options>
+    			<pcolor>#ffffff</pcolor>
+    			<scolor>#000000</scolor>
+	</wallpaper>
+
+
+
+	<wallpaper deleted="false">
+		
+		<name>Linux 2</name>
+		<filename>/usr/share/backgrounds/Linux/linuxwall2.png</filename>
+		<options>zoom</options>
+    			<pcolor>#ffffff</pcolor>
+   			<scolor>#000000</scolor>
+	</wallpaper>
+
+
+
+</wallpapers>

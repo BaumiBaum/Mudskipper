@@ -1,0 +1,36 @@
+#!/bin/sh
+
+DIR="$( cd  "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+MainDIR="$(dirname $DIR)"
+MainDIR="$(dirname $MainDIR)"
+
+export Type=user
+
+source $MainDIR/ressources.d/variables
+
+TerminalColor="$(get_var TerminalColor)"
+
+
+
+if [ !  "$TerminalColor" == "true" ]; then
+
+
+	dconfdir=/org/gnome/terminal/legacy/profiles:
+	
+	dconf reset -f /org/gnome/terminal/legacy/profiles:/
+
+	profile_id="$(uuidgen)"
+	profile_dir="$dconfdir/:$profile_id"
+
+	dconf write $dconfdir "'$profile_id'"
+	dconf write $profile_dir/visible-name "'Default'"
+	dconf write $profile_dir/use-theme-colors "false"
+	dconf write $profile_dir/foreground-color "'rgb(211,211,211)'"
+	dconf write $profile_dir/bold-color "'rgb(147,161,161)'"
+	dconf write $profile_dir/background-color "'rgb(0,43,54)'"
+	dconf write $profile_dir/foreground-color "'rgb(131,148,150)'"
+	dconf write $profile_dir/bold-color-same-as-fg "false"
+	dconf write $dconfdir/list "['$profile_id']"
+
+	write_var TerminalColor true
+fi

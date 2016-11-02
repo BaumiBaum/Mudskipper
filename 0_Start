@@ -101,7 +101,7 @@ arch-chroot $MOUNTPOINT .$SCRIPTPATH/1_Script/5_Enable_Services
 ./1_Script/ui/status x x x x o \  \  \ 
 
 
-arch-chroot $MOUNTPOINT .$SCRIPTPATH/1_Script/6_Local_Packages
+arch-chroot $MOUNTPOINT .$SCRIPTPATH/1_Script/6_Default_Apps
 
 
 #########################
@@ -112,7 +112,7 @@ arch-chroot $MOUNTPOINT .$SCRIPTPATH/1_Script/6_Local_Packages
 ./1_Script/ui/clear
 ./1_Script/ui/status x x x x x o \  \ 
 
-arch-chroot $MOUNTPOINT .$SCRIPTPATH/1_Script/7_Default_Apps
+arch-chroot $MOUNTPOINT .$SCRIPTPATH/1_Script/7_Local_Packages
 
 
 #########################

@@ -1,0 +1,112 @@
+#!/bin/bash
+
+
+##ooooooooooooooooooooooooooooooooooooooooooooo##
+#                                               #
+#	Install Default GUI Applications	#
+#                                               #
+##ooooooooooooooooooooooooooooooooooooooooooooo##
+
+
+#########################
+#Images Folder		#
+#########################
+
+
+pacman --noconfirm -S gimp
+
+
+#########################
+#Multimedia Folder	#
+#########################
+
+
+pacman --noconfirm -S gnome-music
+
+
+pacman --noconfirm -S kdenlive
+
+
+#########################
+#Games Folder		#
+#########################
+
+
+pacman --noconfirm -S aisleriot
+
+pacman --noconfirm -S gnome-mines
+
+pacman --noconfirm -S gnome-sudoku
+
+pacman --noconfirm -S gnome-2048
+
+
+#########################
+#Service  Folder	#
+#########################
+
+
+pacman --noconfirm -S gedit
+
+pacman --noconfirm -S asunder
+
+pacman --noconfirm -S brasero
+
+pacman --noconfirm -S file-roller
+
+pacman --noconfirm -S gnome-calendar
+
+
+#########################
+#Office Folder		#
+#########################
+
+pacman --noconfirm -S libreoffice-still libreoffice-still-de
+
+#########################
+#Web Folder		#
+#########################
+
+
+pacman --noconfirm -S firefox
+pacman --noconfirm -S firefox-i18n-de
+
+pacman --noconfirm -S thunderbird
+pacman --noconfirm -S thunderbird-i18n-de
+
+pacman --noconfirm -S telepathy
+
+
+#########################
+#System Folder		#
+#########################
+
+
+pacman --noconfirm -S gnome-software
+
+
+##ooooooooooooooooooooooooooooooooooooooooooooo##
+#                                               #
+#			Other			#
+#                                               #
+##ooooooooooooooooooooooooooooooooooooooooooooo##
+
+
+#########################
+#Install TUI Apps	#
+#########################
+
+
+pacman -S --noconfirm wget
+pacman -S --noconfirm git
+
+#########################
+#Remove Unused Apps	#
+#########################
+
+
+pacman -Runs --noconfirm epiphany
+
+
+pacman --noconfirm -Sc && pacman-optimize
+

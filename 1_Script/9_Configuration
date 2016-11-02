@@ -8,42 +8,8 @@
 echo blacklist pcspkr >> /etc/modprobe.d/spkr.conf
 
 
-#########################
-#Rename other Apps      #
-#########################
 
 
-sed -i '/Name\[de\]Name[de]=Cheese/d' /usr/share/applications/org.gnome.Cheese.desktop
-echo Name\[de\]=Webcam >> /usr/share/applications/org.gnome.Cheese.desktop
-
-
-#########################
-#Hide unused Apps       #
-#########################
-
-echo NoDisplay=true >> /usr/share/applications/avahi-discover.desktop
-echo NoDisplay=true >> /usr/share/applications/bssh.desktop
-echo NoDisplay=true >> /usr/share/applications/bvnc.desktop
-echo NoDisplay=true >> /usr/share/applications/ca.desrt.dconf-editor.desktop
-echo NoDisplay=true >> /usr/share/applications/tracker-preferences.desktop
-echo NoDisplay=true >> /usr/share/applications/qv4l2.desktop
-echo NoDisplay=true >> /usr/share/applications/org.gnome.font-viewer.desktop
-echo NoDisplay=true >> /usr/share/applications/gucharmap.desktop
-echo NoDisplay=true >> /usr/share/applications/cups.desktop
-echo NoDisplay=true >> /usr/share/applications/org.gnome.Dictionary.desktop
-
-#########################
-#Optimize Pacman        #
-#########################
-
-pacman --noconfirm -Sc && pacman-optimize
-
-#########################
-#AppFolder Config       #
-#########################
-
-mkdir -p /etc/mudskipper/AppFolder/config
-ls /usr/share/applications > /etc/mudskipper/AppFolder/config/app_base
 
 
 
