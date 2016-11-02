@@ -10,12 +10,33 @@ SCRIPTPATH=/etc/mudskipper/Script
 rm -R /usr/share/backgrounds
 rm -R /usr/share/gnome-background-properties
 
+#########################
+#Womba Function		#
+#########################
+
+function womba {
+
+git clone https://github.com/womba/$1 /tmp/$1
+cp -R /tmp/$1/* /
+rm -R /tmp/$1
+
+}
 
 #########################
 #Install Packages	#
 #########################
 
+echo Enter
+read
+womba telegram
+womba desktop-default
+womba icons-shadowless
+womba rune-core
+womba rune-app-folder
+womba rune-app-folder-plus
+womba rune-bash-profile
+womba rune-terminal-color
+womba rune-wallpaper
 
-cp -Rf $SCRIPTPATH/2_Packages/*/* /	
 systemctl enable runecore.service
 
